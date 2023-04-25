@@ -1,10 +1,13 @@
-//06_Knapsack.c
 #include<stdio.h>
+#define MAX_N 20
+#define MAX_W 100
+
 int max(int a, int b) { return (a > b)? a : b; }
+
 int knapSack(int W, int wt[], int val[], int n)
 {
    int i, w;
-   int K[n+1][W+1];
+   int K[MAX_N+1][MAX_W+1];
    for (i = 0; i <= n; i++)
    {
        for (w = 0; w <= W; w++)
@@ -19,9 +22,10 @@ int knapSack(int W, int wt[], int val[], int n)
    }
    return K[n][W];
 }
+
 int main()
 {
-    int i, n, val[20], wt[20], W;
+    int i, n, val[MAX_N], wt[MAX_N], W;
     
     printf("Enter number of items: ");
     scanf("%d", &n);

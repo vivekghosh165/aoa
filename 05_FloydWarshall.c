@@ -1,8 +1,9 @@
-//05_FloydWarshall.c
 #include <stdio.h>
-#include <stdlib.h>
- 
-void floydWarshall(int **graph, int n)
+
+#define MAX_VERTICES 100
+#define INF 100
+
+void floydWarshall(int graph[][MAX_VERTICES], int n)
 {
     int i, j, k;
     for (k = 0; k < n; k++)
@@ -17,34 +18,22 @@ void floydWarshall(int **graph, int n)
         }
     }
 }
- 
+
 int main(void)
 {
     int n, i, j;
+    int graph[MAX_VERTICES][MAX_VERTICES];
     printf("Enter the number of vertices: ");
     scanf("%d", &n);
-    int **graph = (int **)malloc((long unsigned) n * sizeof(int *));
-    for (i = 0; i < n; i++)
-    {
-        graph[i] = (int *)malloc((long unsigned) n * sizeof(int));
-    }
-    for (i = 0; i < n; i++)
-    {
-        for (j = 0; j < n; j++)
-        {
-            if (i == j)
-                graph[i][j] = 0;
-            else
-                graph[i][j] = 100;
-        }
-    }
     printf("Enter the edges: \n");
     for (i = 0; i < n; i++)
     {
         for (j = 0; j < n; j++)
-        {
+	{
             printf("[%d][%d]: ", i, j);
             scanf("%d", &graph[i][j]);
+            if (graph[i][j] == -1) // if the user enters -1, set the weight to INF
+                graph[i][j] = INF;
         }
     }
     printf("The original graph is:\n");
