@@ -1,8 +1,7 @@
+//05_FloydWarshall.c
 #include <stdio.h>
-
 #define MAX_VERTICES 100
 #define INF 100
-
 void floydWarshall(int graph[][MAX_VERTICES], int n)
 {
     int i, j, k;
@@ -18,7 +17,6 @@ void floydWarshall(int graph[][MAX_VERTICES], int n)
         }
     }
 }
-
 int main(void)
 {
     int n, i, j;
@@ -32,7 +30,7 @@ int main(void)
 	{
             printf("[%d][%d]: ", i, j);
             scanf("%d", &graph[i][j]);
-            if (graph[i][j] == -1) // if the user enters -1, set the weight to INF
+            if (graph[i][j] == -1)
                 graph[i][j] = INF;
         }
     }
