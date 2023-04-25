@@ -13,10 +13,7 @@ void floydWarshall(int graph[][MAX_VERTICES], int n)
             {
                 if (graph[i][j] > graph[i][k] + graph[k][j])
                     graph[i][j] = graph[i][k] + graph[k][j];
-            }
-        }
-    }
-}
+            }}}}
 int main(void)
 {
     int n, i, j;
