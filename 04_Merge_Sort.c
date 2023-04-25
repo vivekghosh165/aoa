@@ -1,58 +1,42 @@
+//04_Merge_Sort.c
 #include <stdio.h>
 #include <stdlib.h>
-
-/* function prototypes */
 void Merge(int arr[], int left, int mid, int right);
 void Merge_Sort(int arr[], int left, int right);
-
-/* main function */
 int main()
 {
     int size, i;
     int arr[100];
-
     printf("Enter the size: ");
     scanf("%d", &size);
-
     printf("Enter the elements of array: ");
     for (i = 0; i < size; i++)
     {
         scanf("%d", &arr[i]);
     }
-
     Merge_Sort(arr, 0, size - 1);
-
     printf("The sorted array is: ");
     for (i = 0; i < size; i++)
     {
         printf("%d ", arr[i]);
     }
-
     printf("\n");
     return 0;
 }
-
-/* function to merge subarrays */
 void Merge(int arr[], int left, int mid, int right)
 {
     int i, j, k;
     int size1 = mid - left + 1;
     int size2 = right - mid;
-
-    /* temporary arrays */
     int Left[100], Right[100];
-
-    /* copying the data from arr to temporary array */
     for (i = 0; i < size1; i++)
         Left[i] = arr[left + i];
 
     for (j = 0; j < size2; j++)
         Right[j] = arr[mid + 1 + j];
-
-    /* merging of the array */
-    i = 0;	/* intital index of first subarray */
-    j = 0;	/* inital index of second subarray */
-    k = left; /* initial index of parent array */
+    i = 0;
+    j = 0;	
+    k = left;
     while (i < size1 && j < size2)
     {
         if (Left[i] <= Right[j])
@@ -67,16 +51,12 @@ void Merge(int arr[], int left, int mid, int right)
         }
         k++;
     }
-
-    /* copying the elements from Left[], if any */
     while (i < size1)
     {
         arr[k] = Left[i];
         i++;
         k++;
     }
-
-    /* copying the elements from Right[], if any */
     while (j < size2)
     {
         arr[k] = Right[j];
@@ -84,19 +64,13 @@ void Merge(int arr[], int left, int mid, int right)
         k++;
     }
 }
-
-/* merge sort function */
 void Merge_Sort(int arr[], int left, int right)
 {
     if (left < right)
     {
-
         int mid = left + (right - left) / 2;
-
-        /* recursive calling of merge_sort */
         Merge_Sort(arr, left, mid);
         Merge_Sort(arr, mid + 1, right);
-
         Merge(arr, left, mid, right);
     }
 }
